@@ -4,43 +4,52 @@ This is a twitch bot which can auto moderate multiple channels
 
 ## Todo
 
-Counter
--ask the count (anyone)
--add to the count (VIPs+Mods)
--reset the count (VIPs+Mods)
+#### Counter
 
-Lurk
+- Ask the count (anyone)
 
-- work off of !lurk and lurk, lurking (maybe able to change to add more or a different response per channel)
+- Add to the count (VIPs+Mods)
 
-Game
+- Reset the count (VIPs+Mods)
 
-- !(Change game to this)
-- changes the game of the stream
+~~needs explaining~~
 
-Title
+#### Lurk
 
-- !(changes the title to this)
+- Work off of !lurk and lurk, lurking (maybe able to change to add more or a different response per channel)
+
+~~needs explaining~~
+
+#### Game
+
+- `!game (Change game to this)`
+  changes the game of the stream
+
+#### Title
+
+- `!title (changes the title to this)`
 - changes the title of the stream
 
-Permit
+#### Permit
 
-- !permit @thisperson
-- can post links without getting timed out for 2 Minutes (anyone permitted, by a Mod or the Streamer)
+- `!permit @thisperson`
+- Can post links without getting timed out for 2 Minutes (anyone permitted, by a Mod or the Streamer)
 
-Timeouts (120seconds)
+##### Timeouts (120seconds)
 
-- anyone who posts a link without being permitted (exclude VIPs + Mods )
-- blacklisted words (editable) for now we can just put incel, simp, virgin
+- Anyone who posts a link without being permitted (exclude VIPs + Mods )
+- Blacklisted words (editable) for now we can just put incel, simp, virgin
 
-Ban
+#### Ban
 
-- anyone that gets timed out by the bot more than 3 times
+- Anyone that gets timed out by the bot more than 3 times
 
-Join Channel
+#### Join Channel
+
 A command or ability to join a channel and store commands for that specific channel
 
-Custom commands/per channel
+#### Custom commands/per channel
+
 For example / but very editable (accepts RegEx)
 
 - !excuse Sorry, Dero burps a lot and forgots manners sometimes
