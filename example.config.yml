@@ -1,0 +1,26 @@
+accessToken: Your access Token
+# This will be shown when using the link below in the url address, make sure this access token was allowed
+
+botAccessToken: This is the access Token used for the bot account
+# using your chatbot of choice's token (This is to allows the bot to view and type in chat)
+
+botUsername: This is your TWITCH BOT's username (In lower case)
+
+clientID: Your Client ID
+# When getting your client ID
+# Make sure the broadcaster you are getting the client ID for has authorised this link
+
+#https://id.twitch.tv/oauth2/authorize?client_id=<CLIENTID>&redirect_uri=<OneOfTheLinksFromYourRedirectURL>&response_type=token&scope=bits:read%20channel:read:subscriptions
+# <CLIENTID> = Your Client ID
+# <OneOfTheLinksFromYourRedirectURL> = This is one of your links from the "OAuth Redirect URLs" on your twitch dev console
+
+#Twitch Dev console can be found at:
+#https://dev.twitch.tv/console/
+clientSecret: This is your client secret you can obtain it from the offical twitch dev dashboard
+
+environment: This should be either "dev" or "production" depending on which environment you are currnetly on
+
+prefix: Your Prefix here
+
+twitchUsername: Put Your Twitch Username here in full lowercase letters
+# If your hostname also has a path prefix you can go into main.ts and edit under "port" in "ReverseProxyAdapter":  "pathprefix" same case for the external port
