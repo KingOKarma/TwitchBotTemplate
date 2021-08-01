@@ -41,7 +41,7 @@ class ExtendedClient extends ChatClient {
     public commands: Map<string, Commands> = new Map();
     public events: Map<string, Events> = new Map();
 
-    public async intiChatClient(): Promise<void> {
+    public async initChatClient(): Promise<void> {
 
 
         /* Commands */
