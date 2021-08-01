@@ -16,18 +16,11 @@ import fs from "fs";
  */
 export default class Config {
     private static readonly _configLocation = "./config.yml";
-
-    public readonly accessToken: string;
-
-    public readonly botAccessToken: string;
-
     public readonly botUsername: string;
 
     public readonly clientID: string;
 
     public readonly clientSecret: string;
-
-    public readonly environment: string;
 
     public readonly prefix: string;
 
@@ -35,12 +28,9 @@ export default class Config {
 
 
     private constructor() {
-        this.accessToken = "";
-        this.botAccessToken = "";
         this.botUsername = "";
         this.clientID = "";
         this.clientSecret = "";
-        this.environment = "";
         this.prefix = "";
         this.twitchUsername = "";
 

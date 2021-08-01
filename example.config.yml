@@ -1,9 +1,3 @@
-accessToken: Your access Token
-# This will be shown when using the link below in the url address, make sure this access token was allowed
-
-botAccessToken: This is the access Token used for the bot account
-# using your chatbot of choice's token (This is to allows the bot to view and type in chat)
-
 botUsername: This is your TWITCH BOT's username (In lower case)
 
 clientID: Your Client ID
@@ -17,8 +11,6 @@ clientID: Your Client ID
 #Twitch Dev console can be found at:
 #https://dev.twitch.tv/console/
 clientSecret: This is your client secret you can obtain it from the offical twitch dev dashboard
-
-environment: This should be either "dev" or "production" depending on which environment you are currnetly on
 
 prefix: Your Prefix here
 
