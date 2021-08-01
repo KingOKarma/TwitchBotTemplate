@@ -1,4 +1,4 @@
 tokenData:
-  accessToken: 
-  expiryTimestamp:
-  refreshToken:
+  accessToken: # Access token obtained from post request
+  expiryTimestamp: null # can be set to null for inital setup
+  refreshToken: # refresh token obtained from post request

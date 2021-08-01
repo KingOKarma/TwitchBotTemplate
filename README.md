@@ -6,19 +6,13 @@ This is a test mainly for practicing how webhooks work and how twitch webhooks w
 
 ### Setup
 
-- run in your terminal `npm install` or if you're using yarn `yarn`
+- run in your terminal `npm install` or if you're using yarn `yarn add`
 
 - Rename the file `example.config.yml` to `config.yml`
-- Do the same with `example.token.yml
+- Do the same with `example.token.yml` to `token.yml` and fill in the values accordingly
 
-
+`config.yml`
 ```yml
-accessToken: Your access Token
-# This will be shown when using the link below in the url address, make sure this access token was allowed
-
-botAccessToken: This is the access Token used for the bot account
-# using your chatbot of choice's token (This is to allows the bot to view and type in chat)
-
 botUsername: This is your TWITCH BOT's username (In lower case)
 
 clientID: Your Client ID
@@ -33,12 +27,22 @@ clientID: Your Client ID
 #https://dev.twitch.tv/console/
 clientSecret: This is your client secret you can obtain it from the offical twitch dev dashboard
 
-environment: This should be either "dev" or "production" depending on which environment you are currnetly on
-
 prefix: Your Prefix here
 
 twitchUsername: Put Your Twitch Username here in full lowercase letters
 # If your hostname also has a path prefix you can go into main.ts and edit under "port" in "ReverseProxyAdapter":  "pathprefix" same case for the external port
+
+```
+
+`token.yml` can be a little harder to fill in as you will need to make at least 1 post request to twitch before hand to get your inital tokens, if you wish to have a quick setup you could use a website such as [Twitch Token Generator](https://twitchtokengenerator.com) which as simple ease of use
+
+Then fill in:
+`token.yml`
+```yml
+tokenData:
+  accessToken: # Access token obtained from post request
+  expiryTimestamp: null # can be set to null for inital setup
+  refreshToken: # refresh token obtained from post request
 ```
 
 ### Runing the script
@@ -59,7 +63,7 @@ if you want to just use node, from the folder root run `node build/main.js` but 
 
 - Next up Put in your client's name
 
-  - For the OAuth Redirect URLs you can add the website `https://redirect.bucketbot.dev` As i have setup a redirect link to make it easier for users but you can use your own link if you wish!.
+  - For the OAuth Redirect URLs you can add the website `https://twitchtokengenerator.com`, You can use your own link if you wish!.
 
   - Then select chat bot (If you're making something else then choose that).
 
@@ -68,42 +72,14 @@ if you want to just use node, from the folder root run `node build/main.js` but 
 ![](https://i.imgur.com/Vxoscln.png)
 
 - Once this is done you can now go to the link:
+https://twitchtokengenerator.com
 
-https://id.twitch.tv/oauth2/authorize?client_id=CLIENT_ID_GOES_HERE&redirect_uri=https://redirect.bucketbot.dev&response_type=token&scope=bits:read%20channel:read:subscriptions%20chat:read%20chat:edit
+- After choosing chatbot or custom token, put in your Client Secret and Client ID you choose the scopes from the list below
 
-- If you have your own link the replace `https://redirect.bucketbot.dev` in there too!
+- Click Generate token and you'll be redirected to an Oauth page for twitch, MAKE SURE YOU ARE LOGGED IN AS THE BOT'S ACCOUNT TO ALLOW THE CORRECT AUTH TOKEN FOR THE BOT otherwise the code will be ran as your user's account
 
-- with replacing the `CLIENT_ID_GOES_HERE` with your client ID
-  It's also worth noting that you can change the permission scopes by adding the scopes to the end of the link, in this link its:
-
-  - `bits:read` // This is for reading bit events (if you choose to)
-
-  - `channel:read:subscriptions` // This is for reading sub events and reading how many subs you have
-
-  - `chat:read` // This is for reading your twitch chat
-  - `chat:edit` // This is for typing in your twitch chat
-
-  ##### REMEMBER
-
-  You must do this same proccess with getting your chatbot's access token (You can use the same Client ID but you need both access tokens, If the redirect auto logs you in try using incogneto mode or something.)
-
-You can split these up either with a space for with `&20`
 
 You can find a list of scopes [here](https://dev.twitch.tv/docs/authentication/#scopes)
 
-**IF you have chosen to use my link then:**
-
-After authorising you'll be redirected to https://redirect.bucketbot.dev
-With your access token being at the top of the page:
-
-![](https://i.imgur.com/KwvtKvc.png)
-
-If you go to this website normally without authorising the website will look like this:
-
-![](https://i.imgur.com/AKlFE55.png)
-
-**IF you did not use my link:**
-
-You can go to your link above and you'll see after authorising you'll be redirected to your own linked website, you'll notice at the top in the link search bar the `#access_token=<token>` thats where you'll find your token!
 
 I hope this template helps out people who just wish to make their own bots!
