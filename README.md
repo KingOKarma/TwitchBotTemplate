@@ -9,8 +9,8 @@ This is a test mainly for practicing how webhooks work and how twitch webhooks w
 - run in your terminal `npm install` or if you're using yarn `yarn`
 
 - Rename the file `example.config.yml` to `config.yml`
+- Do the same with `example.token.yml
 
-- Write your parameters into the file, notes are written in the file:
 
 ```yml
 accessToken: Your access Token
