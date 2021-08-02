@@ -47,12 +47,12 @@ class ExtendedClient extends ChatClient {
         /* Commands */
         const commandPath = path.join(__dirname, "..", "commands");
         console.log(commandPath);
-        fs.readdirSync(commandPath).forEach((dir) => {
+        fs.readdirSync(commandPath).forEach(async (dir) => {
             const cmds = fs.readdirSync(`${commandPath}/${dir}`).filter((file) => file.endsWith(".js"));
 
             for (const file of cmds) {
                 // eslint-disable-next-line @typescript-eslint/no-var-requires
-                const { command } = require(`${commandPath}/${dir}/${file}`);
+                const { command } = await import(`${commandPath}/${dir}/${file}`);
                 this.commands.set(command.name, command);
 
                 if (command?.aliases !== undefined) {
