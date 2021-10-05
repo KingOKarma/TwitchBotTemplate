@@ -3,6 +3,7 @@ import { RefreshableAuthProvider, StaticAuthProvider } from "twitch-auth";
 import { ApiClient } from "twitch";
 import { ChatClient } from "twitch-chat-client";
 import { Commands } from "../interfaces/commands";
+import { Cooldowns } from "../interfaces/cooldowns";
 import { Events } from "../interfaces/events";
 import Token from "../utils/token";
 import { eventBinder } from "../utils/eventBinder";
@@ -39,6 +40,7 @@ class ExtendedClient extends ChatClient {
     public apiClient = new ApiClient({ authProvider });
     public clientEvent = eventBinder(this);
     public commands: Map<string, Commands> = new Map();
+    public cooldowns: Map<string, Cooldowns> = new Map();
     public events: Map<string, Events> = new Map();
 
     public async initChatClient(): Promise<void> {

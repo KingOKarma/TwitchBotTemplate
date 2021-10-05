@@ -19,6 +19,7 @@
   "homepage": "https://github.com/KingOKarma/TwitchModBot#readme",
   "devDependencies": {
     "@types/js-yaml": "^4.0.1",
+    "@types/ms": "^0.7.31",
     "@types/node": "^15.0.2",
     "@typescript-eslint/eslint-plugin": "^4.22.1",
     "@typescript-eslint/parser": "^4.22.1",
