@@ -18,7 +18,7 @@ export default class Config {
     private static readonly _configLocation = "./config.yml";
     public readonly botUsername: string;
 
-    public readonly clientID: string;
+    public readonly clientId: string;
 
     public readonly clientSecret: string;
 
@@ -29,7 +29,7 @@ export default class Config {
 
     private constructor() {
         this.botUsername = "";
-        this.clientID = "";
+        this.clientId = "";
         this.clientSecret = "";
         this.prefix = "";
         this.twitchUsername = "";

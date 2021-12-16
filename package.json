@@ -27,9 +27,9 @@
   },
   "dependencies": {
     "js-yaml": "^4.1.0",
-    "twitch": "^4.5.5",
-    "twitch-auth": "^4.5.5",
-    "twitch-chat-client": "^4.5.5",
+    "@twurple/api": "^5.0.5",
+    "@twurple/auth": "^5.0.5",
+    "@twurple/chat": "^5.0.5",
     "typescript": "^4.2.4"
   }
 }

@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/member-ordering */
 import ExtendedClient from "../client/client";
-import { TwitchPrivateMessage } from "twitch-chat-client/lib/StandardCommands/TwitchPrivateMessage";
+import { TwitchPrivateMessage } from "@twurple/chat/lib/commands/TwitchPrivateMessage";
 
 type Run = (client: ExtendedClient, msg: TwitchPrivateMessage, args: string[],) => void;
 
@@ -9,6 +9,8 @@ export interface Commands {
     description: string;
     cooldown?: number;
     cooldownResponse?: string;
+    modOnly?: boolean;
+
     example: string[];
     aliases?: string[];
     group: string;

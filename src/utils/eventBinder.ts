@@ -1,10 +1,11 @@
 /* eslint-disable @typescript-eslint/no-unnecessary-type-arguments */
 /* eslint-disable sort-keys */
-import { ChatClient } from "twitch-chat-client";
+import { ChatClient } from "@twurple/chat";
 import { EventEmitter } from "events";
 
-export type TwitchEvents =
-    "command"
+export type ChatClientEvents =
+    "ready"
+    | "command"
     | "anyMessage"
     | "authFail"
     | "ban"
@@ -64,6 +65,11 @@ export const clientEvent = new EventEmitter();
  * })
  */
 export function eventBinder(client: ChatClient): EventEmitter {
+
+    client.onRegister(() => {
+        clientEvent.emit("ready");
+    });
+
     client.onAction((channel, user, message, msg) => {
         clientEvent.emit("command", channel, user, message, msg);
     });

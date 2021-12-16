@@ -1,39 +1,31 @@
 import { CONFIG, TOKEN } from "../utils/globals";
-import { RefreshableAuthProvider, StaticAuthProvider } from "twitch-auth";
-import { ApiClient } from "twitch";
-import { ChatClient } from "twitch-chat-client";
+import { ApiClient } from "@twurple/api";
+import { ChatClient } from "@twurple/chat";
 import { Commands } from "../interfaces/commands";
 import { Cooldowns } from "../interfaces/cooldowns";
 import { Events } from "../interfaces/events";
+import { RefreshingAuthProvider } from "@twurple/auth";
 import Token from "../utils/token";
 import { eventBinder } from "../utils/eventBinder";
 import fs from "fs";
 import path from "path";
 
 // Config consts
-const { clientID } = CONFIG;
+const { clientId } = CONFIG;
 const { clientSecret } = CONFIG;
 
-
 // Auth Consts
-export const authProvider = new RefreshableAuthProvider(
-    new StaticAuthProvider(clientID, TOKEN.tokenData.accessToken),
+export const authProvider = new RefreshingAuthProvider(
     {
+        clientId,
         clientSecret,
-        expiry: TOKEN.tokenData.expiryTimestamp === null ? null : new Date(TOKEN.tokenData.expiryTimestamp),
-        onRefresh: async ({ accessToken, refreshToken, expiryDate }): Promise<void> => {
-            const newTokenData = {
-                accessToken,
-                expiryTimestamp: expiryDate === null ? null : expiryDate.getTime(),
-                refreshToken
-            };
+        onRefresh: (newTokenData): void => {
             TOKEN.tokenData = newTokenData;
             Token.saveConfig();
-        },
-        refreshToken: TOKEN.tokenData.refreshToken
-    }
+        }
+    },
+    TOKEN.tokenData
 );
-
 
 class ExtendedClient extends ChatClient {
     public aliases: Map<string, Commands> = new Map();
@@ -42,6 +34,7 @@ class ExtendedClient extends ChatClient {
     public commands: Map<string, Commands> = new Map();
     public cooldowns: Map<string, Cooldowns> = new Map();
     public events: Map<string, Events> = new Map();
+    public startedAt = Date.now();
 
     public async initChatClient(): Promise<void> {
 
@@ -65,7 +58,9 @@ class ExtendedClient extends ChatClient {
             }
         });
 
-        await this.connect().then(void console.log("Sucessfully connected bot client!"));
+        await this.connect().then(() => {
+            console.log(`Sucessfully connected to Twitch client as ${CONFIG.botUsername}`);
+        }).catch(console.error);
 
 
         /* Events */

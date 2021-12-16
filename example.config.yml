@@ -1,12 +1,7 @@
 botUsername: This is your TWITCH BOT's username (In lower case)
 
-clientID: Your Client ID
+clientId: Your Client ID
 # When getting your client ID
-# Make sure the broadcaster you are getting the client ID for has authorised this link
-
-#https://id.twitch.tv/oauth2/authorize?client_id=<CLIENTID>&redirect_uri=<OneOfTheLinksFromYourRedirectURL>&response_type=token&scope=bits:read%20channel:read:subscriptions
-# <CLIENTID> = Your Client ID
-# <OneOfTheLinksFromYourRedirectURL> = This is one of your links from the "OAuth Redirect URLs" on your twitch dev console
 
 #Twitch Dev console can be found at:
 #https://dev.twitch.tv/console/

@@ -1,6 +1,7 @@
 import { CONFIG } from "../utils/globals";
 import { Events } from "../interfaces/events";
-import { TwitchPrivateMessage } from "twitch-chat-client/lib/StandardCommands/TwitchPrivateMessage";
+import { TwitchPrivateMessage } from "@twurple/chat/lib/commands/TwitchPrivateMessage";
+import { checkPerms } from "../utils/functions/checkPerms";
 import ms from "ms";
 
 export const event: Events = {
@@ -41,13 +42,17 @@ export const event: Events = {
                     command: command.name,
                     cooldownTime: command.cooldown,
                     timeSet: Date.now(),
-                    userID: msg.userInfo.userId ?? "none"
+                    userID: msg.userInfo.userId
                 });
 
                 setTimeout(() => {
                     client.cooldowns.delete(`${command.name}/${msg.userInfo.userId}`);
                 }, command.cooldown * 1000);
 
+            }
+
+            if (command.modOnly !== undefined && command.modOnly) {
+                if (!checkPerms(msg)) return client.say(msg.params.target, `@${user} Sorry that command can only be used by Mods and above!`);
             }
 
             command.run(client, msg, args);
